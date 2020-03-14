@@ -2,25 +2,37 @@ import paho.mqtt.client as mqtt
 import paho.mqtt.subscribe as subscribe
 import json
 from race import Race
+from car_status_type import Status
 
 print(f"starting...")
 
-race = Race()
 
-print(f"created race object: {race}")
+# print(f"created race object: {race}")
 
-def on_message(client, userdata, message):
-    data = json.loads(message.payload)
-    race.update_info(data)
-    print("%s" % (data))
+
+    # print("%s" % (data))
 
 
 def main():
     client = mqtt.Client("v1")
+
+    def on_message(client, userdata, message):
+        data = json.loads(message.payload)
+        race.update_info(data)
+
+    def publish_event(topic, data):
+        event = json.dumps(data)
+        # print(f"published to {topic}: {event}")
+        client.publish(topic, event)
+
+    race = Race(publish_callback=publish_event)
     client.connect("broker",port=1883)
     client.subscribe("carCoordinates")
     client.on_message = on_message
+    # publish_event()
     client.loop_forever()
+
+
 
 # def publish_event():
 
