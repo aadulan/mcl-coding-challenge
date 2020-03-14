@@ -5,6 +5,39 @@
 * [docker](https://docs.docker.com/)
 * [docker-compose](https://docs.docker.com/compose/)
 
+## Run Code
+
+<pre><code>$ docker-compose pull
+$ docker-compose up -d
+</code></pre>
+
+## Run Tests
+
+<pre><code>$ pytest
+</code></pre>
+
+## Notes
+
+- Classes:
+  - Race
+  - Car
+- The client susbcribes to the `carCoordinates` topic
+- The race class updates all the cars
+- If the car does not exist, a car is created and then updated
+- Car Position is determined by calculating total distance travelled 
+- The speed (mph) is calculated by using two `carCoordinate` updates. The distance is calculated by using the `geodesic` function which takes in two coordinates.
+- Race class exposes a callback to the car class which publishes messages to the MQTT Client.
+- Every time all the cars are updates, the speed and position of each car is published
+- An event is published by tracking car positions and calculating which car has overtaken
+
+## Assumptions
+- All cars are following a racing line so I can calculate position by using total distance travelled
+- No cars will be going in reverse 
+- All cars start at the same location 
+
+-------------------------------------------------
+
+
 ## Introduction
 
 The purpose of this challenge is for you to demonstrate
