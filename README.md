@@ -17,6 +17,7 @@ $ docker-compose up -d
 </code></pre>
 
 ## Notes
+(Code is commented)
 
 - Classes:
   - Race
