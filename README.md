@@ -1,5 +1,7 @@
 # MAT Fan Engagement Coding Challenge
 
+![Racing](front-end.png)
+
 ## Prerequisites:
 
 * [docker](https://docs.docker.com/)
