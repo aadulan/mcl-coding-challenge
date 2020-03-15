@@ -27,8 +27,8 @@ $ docker-compose up -d
 - Car Position is determined by calculating total distance travelled 
 - The speed (mph) is calculated by using two consectuive `carCoordinate` updates. The distance is calculated by using the `geodesic` function which takes in two coordinates.
 - Race class exposes a callback to the car class which publishes messages to the MQTT Client.
-- Every time all the cars are updates, the speed and position of each car is published
-- An event is published by tracking car positions and calculating which car has overtaken
+- Every time, all six the cars are updated, the speed and position of each car is published
+- An event is published by tracking car positions and is sent when two cars swaped places
 
 ## Assumptions
 - All cars are following a racing line so I can calculate position by using total distance travelled
